@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trending Video Templates</title>
+
+  <style>
+    :root {
+      --primary: #111;
+      --accent: #ff4d6d;
+      --bg: #f8f9fa;
+      --card: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--primary);
+    }
+
+    header {
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 20px;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Category Bar */
+    .categories {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 12px;
+      background: white;
+    }
+
+    .categories button {
+      flex: 0 0 auto;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 20px;
+      background: #eee;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .categories button.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card video,
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn {
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Desktop refinement */
+    @media(min-width: 768px) {
+      header {
+        font-size: 24px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>🔥 Trending Video Templates</header>
+
+<!-- Categories -->
+<div class="categories" id="categoryBar">
+  <button class="active" data-category="all">All</button>
+  <button data-category="birthday">Birthday</button>
+  <button data-category="cinematic">Cinematic</button>
+  <button data-category="attitude">Attitude</button>
+  <button data-category="devotional">Devotional</button>
+</div>
+
+<!-- Grid -->
+<div class="grid" id="templateGrid"></div>
+
+<script>
+  // 🔹 Template Data (EDIT THIS ONLY)
+  const templates = [
+    {
+      title: "Birthday Reel",
+      category: "birthday",
+      preview: "https://www.w3schools.com/html/mov_bbb.mp4",
+      link: "https://example.com/template1"
+    },
+    {
+      title: "Cinematic Edit",
+      category: "cinematic",
+      preview: "https://www.w3schools.com/html/movie.mp4",
+      link: "https://example.com/template2"
+    },
+    {
+      title: "Attitude Status",
+      category: "attitude",
+      preview: "https://via.placeholder.com/300x400",
+      link: "https://example.com/template3"
+    },
+    {
+      title: "Devotional Reel",
+      category: "devotional",
+      preview: "https://via.placeholder.com/300x400",
+      link: "https://example.com/template4"
+    }
+  ];
+
+  const grid = document.getElementById("templateGrid");
+  const buttons = document.querySelectorAll(".categories button");
+
+  function renderTemplates(filter = "all") {
+    grid.innerHTML = "";
+
+    const filtered = filter === "all"
+      ? templates
+      : templates.filter(t => t.category === filter);
+
+    filtered.forEach(template => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const media = template.preview.includes(".mp4")
+        ? `<video src="${template.preview}" autoplay muted loop playsinline></video>`
+        : `<img src="${template.preview}" alt="preview"/>`;
+
+      card.innerHTML = `
+        ${media}
+        <div class="card-content">
+          <div class="title">${template.title}</div>
+          <button class="btn" onclick="openTemplate('${template.link}')">
+            Use Template
+          </button>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+
+  function openTemplate(url) {
+    window.open(url, "_blank");
+  }
+
+  // Category Filter
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelector(".active").classList.remove("active");
+      btn.classList.add("active");
+      renderTemplates(btn.dataset.category);
+    });
+  });
+
+  // Initial Load
+  renderTemplates();
+</script>
+
+</body>
+</html>
