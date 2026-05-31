@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Template</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #0b0f19; color: #ffffff; padding: 12px; }
+        .categories { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 20px 0; white-space: nowrap; }
+        .categories::-webkit-scrollbar { display: none; }
+        .cat-btn { background-color: #1e2640; color: #94a3b8; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; }
+        .cat-btn.active { background-color: #2ed573; color: #0b0f19; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 600px; margin: 0 auto; }
+        .card { background-color: #111827; border-radius: 16px; overflow: hidden; border: 1px solid #1f2937; display: flex; flex-direction: column; }
+        .preview-box { height: 180px; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%); }
+        .play-icon { width: 45px; height: 45px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; backdrop-filter: blur(5px); }
+        .info { padding: 10px 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .info h3 { font-size: 14px; font-weight: 600; color: #f3f4f6; margin-bottom: 8px; text-align: center; }
+        .btn { display: block; width: 100%; text-align: center; background-color: #2ed573; color: #0b0f19; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <header style="text-align: center; padding: 25px 0 15px 0;">
+        <h1 style="font-size: 28px; font-weight: 800; color: #2ed573; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 213, 115, 0.3);">
+            🟢 Easy Template
+        </h1>
+    </header>
+
+    <div class="categories">
+        <a href="#" class="cat-btn active">All</a>
+        <a href="#" class="cat-btn">Birthday</a>
+        <a href="#" class="cat-btn">Cinematic</a>
+        <a href="#" class="cat-btn">Attitude</a>
+        <a href="#" class="cat-btn">Devotional</a>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="preview-box">
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="info">
+                <h3>Birthday Reel</h3>
+                <a href="https://www.google.com" target="_blank" class="btn">Use Template</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="preview-box" style="background: linear-gradient(135deg, #064e3b 0%, #111827 100%);">
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="info">
+                <h3>Cinematic Edit</h3>
+                <a href="https://www.google.com" target="_blank" class="btn">Use Template</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="preview-box" style="background: linear-gradient(135deg, #7c1d1d 0%, #111827 100%);">
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="info">
+                <h3>Attitude Status</h3>
+                <a href="https://www.google.com" target="_blank" class="btn">Use Template</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="preview-box" style="background: linear-gradient(135deg, #6b21a8 0%, #111827 100%);">
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="info">
+                <h3>Devotional Reel</h3>
+                <a href="https://www.google.com" target="_blank" class="btn">Use Template</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
